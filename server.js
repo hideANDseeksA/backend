@@ -155,7 +155,9 @@ app.get('/api/students', async (req, res) => {
 
 
 const transporter = nodemailer.createTransport({
-  service: 'Gmail', // You can use 'Gmail', 'Outlook', etc., or configure an SMTP server
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // You can use 'Gmail', 'Outlook', etc., or configure an SMTP server
   auth: {
     user: 'jhonbraynrafer@mabinicolleges.edu.ph',
     pass: 'kllcywzgudbeouwu',
