@@ -157,15 +157,15 @@ app.get('/api/students', async (req, res) => {
 const transporter = nodemailer.createTransport({
   service: 'Gmail', // You can use 'Gmail', 'Outlook', etc., or configure an SMTP server
   auth: {
-    user: 'mcsaliksik@gmail.com',
-    pass: 'vubpgxhfuvwbnvde',
+    user: 'jhonbraynrafer@mabinicolleges.edu.ph',
+    pass: 'kllcywzgudbeouwu',
   },
 });
 
 // Function to send email
 const sendEmail = async (to, subject, text,html) => {
   const mailOptions = {
-    from: 'mcsaliksik@gmail.com', // Update this to the sender email
+    from: 'MC Saliksik <jhonbraynrafer@mabinicolleges.edu.ph>', // Update this to the sender email
     to: to,
     subject: subject,
     text: text,
