@@ -165,7 +165,7 @@ const transporter = nodemailer.createTransport({
 // Function to send email
 const sendEmail = async (to, subject, text,html) => {
   const mailOptions = {
-    from: 'MC Saliksik <jhonbraynrafer@mabinicolleges.edu.ph>', // Update this to the sender email
+    from: 'jhonbraynrafer@mabinicolleges.edu.ph', // Update this to the sender email
     to: to,
     subject: subject,
     text: text,
