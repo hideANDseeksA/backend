@@ -191,25 +191,25 @@ app.put('/api/students/:email/verify', async (req, res) => {
     await client.query('UPDATE students SET auth = $1 WHERE email = $2', [verify, email]);
 
     // Send email notification with formal message
-    const emailMessage = verify
-      ? `Dear Student,
+//     const emailMessage = verify
+//       ? `Dear Student,
 
-We are pleased to inform you that your account has been successfully verified in our system. You now have full access to all available resources and services.
+// We are pleased to inform you that your account has been successfully verified in our system. You now have full access to all available resources and services.
 
-Should you have any questions or need further assistance, please feel free to reach out to our support team.
+// Should you have any questions or need further assistance, please feel free to reach out to our support team.
 
-Best regards,
-Mc Saliksik`
-      : `Dear Student,
+// Best regards,
+// Mc Saliksik`
+//       : `Dear Student,
 
-We would like to notify you that your account verification  status have been revoked. As a result, your access to certain services may be restricted.
+// We would like to notify you that your account verification  status have been revoked. As a result, your access to certain services may be restricted.
 
-If you believe this is an error or require assistance, please contact our support team for further clarification.
+// If you believe this is an error or require assistance, please contact our support team for further clarification.
 
-Best regards,
-Mc Saliksik`;
+// Best regards,
+// Mc Saliksik`;
 
-    await sendEmail(email, 'Update on Your Verification and Enrollment Status', emailMessage);
+//     await sendEmail(email, 'Update on Your Verification and Enrollment Status', emailMessage);
 
     res.status(200).json({ message: verify ? 'Student is verified and enrolled' : 'Verification status updated' });
   } catch (error) {
@@ -225,25 +225,25 @@ app.put('/api/students/:email/enrolled', async (req, res) => {
     await client.query('UPDATE students SET  enrolled = $1 WHERE email = $2', [enrolled, email]);
 
     // Send email notification with formal message
-    const emailMessage = enrolled
-      ? `Dear Student,
+//     const emailMessage = enrolled
+//       ? `Dear Student,
 
-We are pleased to inform you that your account has been successfully  you are now enrolled in our system. You now have full access to all available resources and services.
+// We are pleased to inform you that your account has been successfully  you are now enrolled in our system. You now have full access to all available resources and services.
 
-Should you have any questions or need further assistance, please feel free to reach out to our support team.
+// Should you have any questions or need further assistance, please feel free to reach out to our support team.
 
-Best regards,
-Mc Saliksik`
-      : `Dear Student,
+// Best regards,
+// Mc Saliksik`
+//       : `Dear Student,
 
-We would like to notify you that your account  enrollment status have been revoked. As a result, your access to certain services may be restricted.
+// We would like to notify you that your account  enrollment status have been revoked. As a result, your access to certain services may be restricted.
 
-If you believe this is an error or require assistance, please contact our support team for further clarification.
+// If you believe this is an error or require assistance, please contact our support team for further clarification.
 
-Best regards,
-Mc Saliksik`;
+// Best regards,
+// Mc Saliksik`;
 
-    await sendEmail(email, 'Update on Your Verification and Enrollment Status', emailMessage);
+//     await sendEmail(email, 'Update on Your Verification and Enrollment Status', emailMessage);
 
     res.status(200).json({ message: enrolled ? 'Student is verified and enrolled' : 'Verification status updated' });
   } catch (error) {
@@ -263,30 +263,30 @@ app.put('/api/students/verifyAll', async (req, res) => {
     const students = result.rows;
 
     // Prepare all email notifications concurrently with formal message
-    const emailPromises = students.map((student) => {
-      const emailMessage = enrolled
-        ? `Dear Student,
+//     const emailPromises = students.map((student) => {
+//       const emailMessage = enrolled
+//         ? `Dear Student,
 
-We are pleased to inform you that your account has been successfully verified and you are now enrolled in our system. You now have full access to all available resources and services.
+// We are pleased to inform you that your account has been successfully verified and you are now enrolled in our system. You now have full access to all available resources and services.
 
-Should you have any questions or need further assistance, please feel free to reach out to our support team.
+// Should you have any questions or need further assistance, please feel free to reach out to our support team.
 
-Best regards,
-Mc Saliksik`
-        : `Dear Student,
+// Best regards,
+// Mc Saliksik`
+//         : `Dear Student,
 
-We would like to notify you that your account verification and enrollment status have been revoked. As a result, your access to certain services may be restricted.
+// We would like to notify you that your account verification and enrollment status have been revoked. As a result, your access to certain services may be restricted.
 
-If you believe this is an error or require assistance, please contact our support team for further clarification.
+// If you believe this is an error or require assistance, please contact our support team for further clarification.
 
-Best regards,
-Mc Saliksik`;
+// Best regards,
+// Mc Saliksik`;
 
-      return sendEmail(student.email, 'Update on Your Verification and Enrollment Status', emailMessage);
-    });
+//       return sendEmail(student.email, 'Update on Your Verification and Enrollment Status', emailMessage);
+//     });
 
-    // Send all emails concurrently
-    await Promise.all(emailPromises);
+//     // Send all emails concurrently
+//     await Promise.all(emailPromises);
 
     res.status(200).json({ message: 'All students updated and notified' });
   } catch (error) {
@@ -363,35 +363,35 @@ app.put('/api/bookactivity_reserve/:id', async (req, res) => {
       WHERE activity_id = $2`;
     await client.query(sql2, [user_email, id]);
 
-    // Send email if the status is 'Approved'
-    if (action_type === 'Approved') {
-      // Send a formal email notification
-      const mailOptions = {
-        from: 'mcsaliksik@gmail.com', // sender address
-        to: user_email,
-        subject: 'MC Salik-sik: Book Approval Notice' + book_title,
-        text: `
-        Dear Students,
+//     // Send email if the status is 'Approved'
+//     if (action_type === 'Approved') {
+//       // Send a formal email notification
+//       const mailOptions = {
+//         from: 'mcsaliksik@gmail.com', // sender address
+//         to: user_email,
+//         subject: 'MC Salik-sik: Book Approval Notice' + book_title,
+//         text: `
+//         Dear Students,
 
-We are pleased to inform you that your book reservation  has been officially approved by MC Salik-sik.
+// We are pleased to inform you that your book reservation  has been officially approved by MC Salik-sik.
 
-Please note the following details:
-Status: Approved
-Please get the book that you have been reserved at the mc library.
+// Please note the following details:
+// Status: Approved
+// Please get the book that you have been reserved at the mc library.
 
-Should you have any further inquiries or require assistance, feel free to contact our support team at MC Salik-sik.
+// Should you have any further inquiries or require assistance, feel free to contact our support team at MC Salik-sik.
 
-Thank you for using our services.
+// Thank you for using our services.
 
-Sincerely,
-MC Salik-sik Team
-        `
-      };
+// Sincerely,
+// MC Salik-sik Team
+//         `
+//       };
 
-      // Send the email
-      await transporter.sendMail(mailOptions);
-      console.log('Approval email sent to:', user_email);
-    }
+//       // Send the email
+//       await transporter.sendMail(mailOptions);
+//       console.log('Approval email sent to:', user_email);
+//     }
 
     res.json({ success: true, message: 'Activity updated, logged, and formal email sent if approved' });
   } catch (error) {
@@ -787,20 +787,20 @@ app.post('/api/insert_students', async (req, res) => {
     const flattenedValues = values.flat();
     await client.query(query, flattenedValues);
 
- // Send an email to each student with their login credentials
-for (const [email, firstName, lastName, password] of values) {
-  const subject = 'Your Account for MC Salik-Sik Library System';
-  const html = `
-    <p>Dear ${firstName} ${lastName},</p>
-    <p>Your account has been created successfully. You can now log in using the following credentials:</p>
-    <p><strong>Email:</strong> ${email}<br><strong>Password:</strong> ${password}</p>
-    <p>Please keep this information secure.</p>
-    <p><a href="https://download-page-psi.vercel.app/" style="padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Download MC Salik-Sik</a></p>
-    <p>Best regards,<br>MC Salik-Sik Library System Team</p>
-  `;
+//  // Send an email to each student with their login credentials
+// for (const [email, firstName, lastName, password] of values) {
+//   const subject = 'Your Account for MC Salik-Sik Library System';
+//   const html = `
+//     <p>Dear ${firstName} ${lastName},</p>
+//     <p>Your account has been created successfully. You can now log in using the following credentials:</p>
+//     <p><strong>Email:</strong> ${email}<br><strong>Password:</strong> ${password}</p>
+//     <p>Please keep this information secure.</p>
+//     <p><a href="https://download-page-psi.vercel.app/" style="padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Download MC Salik-Sik</a></p>
+//     <p>Best regards,<br>MC Salik-Sik Library System Team</p>
+//   `;
 
-  await sendEmail(email, subject,null, html);
-}
+//   await sendEmail(email, subject,null, html);
+// }
 
     res.status(201).send('Students added and emails sent successfully');
   } catch (error) {
